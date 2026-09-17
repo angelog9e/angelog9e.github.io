@@ -1,116 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> MY PORTFOLIO </title>
-    <link rel="stylesheet" href="Portfolio.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angelo Aquino — Project Management &amp; Web Development</title>
+<link rel="stylesheet" href="Portfolio.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-
-    <!-- NAVBAR -->
-
-    <div id="wrapper1" class="container-fluid">
-      <nav class="navigation">
-        <div class="left">
-          <div class="logo">ANGELO AQUINO</div>
-          <div class="sublogo">PORTFOLIO</div>
-        </div>
-  
-        <div class="right">
-          <ul>
-            <li><a href="#aboutme">ABOUT ME</a></li>
-            <li><a href="#portfolio">PORTFOLIO</a></li>
-            <li><a href="#footer">CONTACT</a></li>
-          </ul>
-        </div>
-      </nav>
-  
-      <!-- HEADER -->
-  
-      <div id="header" class="container-fluid">
-  <div id="welcome">
-    <h1>WELCOME</h1>
-    <h4 style="padding-bottom: 50px">Let's create amazing things together.</h4>
-    <a href="#aboutme" class="btn-circle">
-      <i class="fa fa-angle-double-down"></i>
-    </a>
+ 
+<div class="cursor-dot" id="cursorDot"></div>
+ 
+<header>
+  <div class="wrap header-inner">
+    <a href="#top" class="brand">Angelo Aquino</a>
+    <nav class="primary-nav" id="primaryNav">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Let's talk</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu">
+      <span></span>
+    </button>
   </div>
-</div>
-    </div>
-    <!-- END WRAPPER -->
-
-    <!-- ABOUT ME -->
-
-    <div id="aboutme" class="container-fluid">
-      <div class="row aboutme-content" style="position: relative; padding-top: 50px;">
-        <div class="col-md-8 about-text">
-          <h4>ABOUT ME</h4><br>
-          <p>Hey! My name is Angelo Karlo Aquino, I am currently a college student dedicated to advancing my knowledge and skills in software development and programming.</p>
-          <p>My academic journey has provided me with a solid foundation in various programming languages and development methodologies, which I am eager to build upon.</p>
-          <p>I am passionate about exploring emerging technologies and applying my skills to solve complex problems and drive innovation.</p>
-          <p>In addition to my coursework, I actively seek out opportunities to enhance my practical experience through personal projects and collaborative efforts.</p>
-          <p>My goal is to contribute effectively to the technology industry by developing robust solutions and staying at the forefront of technological advancements.</p>
-          <p>I am committed to continuous learning and growth, and I am excited about the challenges and opportunities that lie ahead in my professional journey.</p>
-        </div>
-        <div class="profile-section">
-          <div class="profile-card">
-            <div class="img">
-              <img src="Angelo Aquino.jpg" alt="Profile">
-            </div>
-            <div class="caption">
-              <h3>Angelo Karlo Aquino</h3>
-              <p>College Student</p>
-              <div class="social-links">
-                <a href="https://www.facebook.com/AngeloG9E"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/itzangeloaquino/"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
+</header>
+ 
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="hero-kicker"><span class="dot"></span>Open for new projects</p>
+      <h1 class="hero-title">
+        <span class="line"><span class="word" style="animation-delay:0.05s">Plans</span> <span class="word" style="animation-delay:0.12s">that</span> <span class="word" style="animation-delay:0.19s">ship.</span></span>
+        <span class="line"><span class="word" style="animation-delay:0.28s">Products</span> <span class="word" style="animation-delay:0.35s">that</span> <span class="word" style="animation-delay:0.42s">work.</span></span>
+      </h1>
+      <p class="hero-sub">I'm Angelo — a project manager and web developer. I plan the roadmap, run the sprints, and write the code that actually ships it.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-solid">View my work</a>
+        <a href="#contact" class="btn btn-outline">Let's talk</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>3 yrs</strong> delivering projects</div>
+        <div><strong>30+</strong> shipped, end to end</div>
+        <div><strong>PMP</strong> in progress</div>
       </div>
     </div>
-    
-    <!-- PORTFOLIO -->
-  
-    <div id="portfolio" class="container-fluid">
-      <h4>PROGRAMMING LANGUAGES</h4><br><br>
-      
-      <div class="row text-center">
-        <div class="col-lg-3 col-md-3 col-sm-6" style="margin-bottom: 10px;">
-          <img src="PYTHON.png" class="img-responsive" style="max-width: 100%;">
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6" style="margin-bottom: 10px;">
-          <img src="JAVA.png" class="img-responsive" style="max-width: 100%;">
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6" style="margin-bottom: 10px;">
-          <img src="HTML.png" class="img-responsive" style="max-width: 100%;">
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6" style="margin-bottom: 10px;">
-          <img src="CSS.png" class="img-responsive" style="max-width: 100%;">
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6" style="margin-bottom: 10px;"></div>
-          <img src="KOTLIN.png" class="img-responsive" style="max-width: 100%;">
-        </div>
+  </section>
+ 
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Roadmapping<span></span></span>
+      <span>Sprint Planning<span></span></span>
+      <span>Stakeholder Comms<span></span></span>
+      <span>React &amp; TypeScript<span></span></span>
+      <span>Agile Delivery<span></span></span>
+      <span>API Design<span></span></span>
+      <span>Risk Management<span></span></span>
+      <span>UI Engineering<span></span></span>
+      <span>Roadmapping<span></span></span>
+      <span>Sprint Planning<span></span></span>
+      <span>Stakeholder Comms<span></span></span>
+      <span>React &amp; TypeScript<span></span></span>
+      <span>Agile Delivery<span></span></span>
+      <span>API Design<span></span></span>
+      <span>Risk Management<span></span></span>
+      <span>UI Engineering<span></span></span>
+    </div>
+  </div>
+ 
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">Selected work</h2>
+        <p class="section-note">6 case studies, 2022–2025</p>
+      </div>
+      <div class="bento reveal" id="bentoGrid"></div>
+    </div>
+  </section>
+ 
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div class="reveal">
+        <p class="pull-quote">"I don't think plans and products should be handed off between two different people."</p>
+        <p class="body-copy">I started out managing delivery for a software consultancy — running sprints, tracking budgets, keeping clients and engineers speaking the same language. A few years in, I started building the tools myself, and never really stopped.</p>
+        <p class="body-copy">Now I work across both: leading the plan when a project needs structure, writing the code when it needs hands — usually some of each on every engagement.</p>
+      </div>
+      <div class="reveal">
+        <ul class="toolkit-list">
+          <li><span>Planning &amp; delivery</span><span>Linear, Jira, Notion</span></li>
+          <li><span>Frontend</span><span>HTML, CSS, JavaScript</span></li>
+          <li><span>Backend</span><span>SQL, MySQL, PHP</span></li>
+          <li><span>Currently</span><span>PMP certification</span></li>
+        </ul>
       </div>
     </div>
-    
-    <!-- FOOTER -->
-
-    <div id="footer" class="container-fluid">
-        <a href="https://www.facebook.com/AngeloG9E" target="blank" class="icon-btn facebook-icn">
-            <i class="fa-brands fa-facebook"></i>
-          </a>
-          <a href="https://twitter.com/AngeloG9E" target="blank" class="icon-btn twitter-icn">
-            <i class="fa-brands fa-twitter"></i>
-          </a>
-          <a href="https://www.instagram.com/itzangeloaquino/" target="blank" class="icon-btn instagram-icn">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-      <br><br>
-      <p>© 2024 ANGELO AQUINO</p>
+  </section>
+ 
+  <section class="contact" id="contact">
+    <div class="wrap reveal">
+      <h2>Got a project that needs both?</h2>
+      <p>I take on a small number of engagements at a time, usually where the planning and the building can't really be separated.</p>
+      <div class="contact-actions">
+        <a href="mailto:hello@morganhale.dev" id="emailLink" class="btn btn-solid btn-magnet">Say hello</a>
+      </div>
+      <div class="social-row">
+        <a href="https://github.com/angelog9e" target="_blank" rel="noopener">GitHub</a>
+        <a href="linkedin.com/in/angelog9e" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="angelocapara@gmail.com" target="_blank" rel="noopener">Email</a>
+      </div>
+      <span class="copy-toast" id="copyToast">Email copied — angelocapara@gmail.com</span>
     </div>
-  </body>
-  </html>
+  </section>
+</main>
+ 
+<footer>
+  <div class="wrap footer-inner">
+    <span>Angelo Aquino — planning and building, in that order.</span>
+    <span id="year"></span>
+  </div>
+</footer>
+ 
+<div class="overlay" id="overlay"></div>
+<aside class="panel" id="panel" aria-hidden="true" aria-labelledby="panelTitle">
+  <div class="panel-art" id="panelArt">
+    <button class="panel-close" id="panelClose" aria-label="Close project details">×</button>
+  </div>
+  <div class="panel-body">
+    <p class="panel-case" id="panelCase"></p>
+    <h3 id="panelTitle"></h3>
+    <div class="panel-meta">
+      <div><span>Role</span><span id="panelRole" style="color:var(--ink)"></span></div>
+      <div><span>Status</span><span id="panelStatus" style="color:var(--ink)"></span></div>
+      <div><span>Timeframe</span><span id="panelTime" style="color:var(--ink)"></span></div>
+    </div>
+    <p class="desc" id="panelDesc"></p>
+    <p class="desc" id="panelDetail"></p>
+    <a href="#" class="panel-link" id="panelLink" target="_blank" rel="noopener">View case study →</a>
+  </div>
+</aside>
+</body>
+</html>
