@@ -15,20 +15,198 @@
     });
   });
  
-  // ---------- Custom cursor ----------
-  var cursor = document.getElementById('cursorDot');
-  var fine = window.matchMedia('(pointer: fine)').matches;
-  if (fine) {
-    cursor.classList.add('active');
-    window.addEventListener('mousemove', function(e){
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ 
+  var projects = [
+    {
+      id: 'Capstone project', title: 'CommunityPulse+',
+      desc: 'A web-based barangay issue and incident management system that streamlines the reporting, tracking, and management of community concerns.',
+      detail: 'Residents report issues and follow their status updates, while barangay personnel manage them from one central platform. Built with a focus on usability, security, reliability, and responsive design, to improve transparency, organization, and response to community concerns.',
+      role: 'Project Manager', status: 'In progress', active: true,
+      time: 'Oct 2025 – Oct 2026', stack: 'HTML, CSS, JavaScript, PHP, MySQL',
+      image: '', art: ['#4A423A', '#241F1B', '#141312', '30%', '20%']
+    },
+    {
+      id: 'Sophomore project', title: 'Sual Municipal Hall Appointment App',
+      desc: 'A mobile appointment system with a web-based admin panel for the Municipality of Sual, with email and SMS notifications.',
+      detail: 'Enables seamless bookings and efficient management for the municipal hall. I managed the team, and we designed a user-friendly interface and delivered the mobile application on time.',
+      role: 'Project Manager', status: 'Delivered on time', active: false,
+      time: 'Nov 2024 – Mar 2025', stack: 'XML, Kotlin, MySQL',
+      image: '', art: ['#3C4640', '#1E2320', '#121413', '70%', '30%']
+    },
+    {
+      id: 'Freshman project', title: 'LapShowdown',
+      desc: 'A website featuring the latest laptops, built to help people find their ideal device.',
+      detail: 'Designed with a user-friendly interface that is easy to understand and use. I managed the team, our time, and our resources consistently to deliver the project on time.',
+      role: 'Project Manager', status: 'Delivered on time', active: false,
+      time: 'Jun 2023 – Oct 2023', stack: 'HTML, CSS, JavaScript',
+      image: '', art: ['#4A3B33', '#241C17', '#141110', '50%', '60%']
+    }
+  ];
+ 
+  function bgStyle(image){
+    return image ? "background-image:url('" + image + "')" : '';
+  }
+ 
+  // ---------- Carousel ----------
+  var track = document.getElementById('carouselTrack');
+  var dotsWrap = document.getElementById('carouselDots');
+  var current = 0;
+ 
+  function buildCarousel(){
+    track.innerHTML = '';
+    dotsWrap.innerHTML = '';
+    projects.forEach(function(p, i){
+      var slide = document.createElement('div');
+      slide.className = 'slide';
+      slide.innerHTML =
+        '<div class="slide-art" style="' + bgStyle(p.image) + '"></div>' +
+        '<div class="slide-scrim"></div>';
+      var artEl = slide.querySelector('.slide-art');
+      if (!p.image) {
+        artEl.style.background = 'radial-gradient(120% 120% at ' + p.art[3] + ' ' + p.art[4] + ', ' + p.art[0] + ', ' + p.art[1] + ' 55%, ' + p.art[2] + ' 100%)';
+      }
+      track.appendChild(slide);
+ 
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1) + ': ' + p.title);
+      dot.addEventListener('click', function(){ goTo(i); });
+      dotsWrap.appendChild(dot);
     });
-    document.querySelectorAll('a, button, .tile').forEach(function(el){
-      el.addEventListener('mouseenter', function(){ cursor.classList.add('grow'); });
-      el.addEventListener('mouseleave', function(){ cursor.classList.remove('grow'); });
+    updateCarousel();
+  }
+ 
+  function updateCarousel(){
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    Array.from(dotsWrap.children).forEach(function(dot, i){
+      dot.setAttribute('aria-current', i === current ? 'true' : 'false');
     });
   }
+  function goTo(i){
+    current = (i + projects.length) % projects.length;
+    updateCarousel();
+  }
+  function next(){ goTo(current + 1); }
+  function prev(){ goTo(current - 1); }
+ 
+  document.getElementById('nextBtn').addEventListener('click', next);
+  document.getElementById('prevBtn').addEventListener('click', prev);
+ 
+  var carouselEl = document.getElementById('carousel');
+  carouselEl.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+ 
+  // Touch swipe
+  var touchStartX = null;
+  carouselEl.addEventListener('touchstart', function(e){ touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+  carouselEl.addEventListener('touchend', function(e){
+    if (touchStartX === null) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+    touchStartX = null;
+  }, { passive: true });
+ 
+  var autoplayId = null;
+  function startAutoplay(){
+    if (reduceMotion) return;
+    stopAutoplay();
+    autoplayId = setInterval(next, 5000);
+  }
+  function stopAutoplay(){
+    if (autoplayId) { clearInterval(autoplayId); autoplayId = null; }
+  }
+  carouselEl.addEventListener('mouseenter', stopAutoplay);
+  carouselEl.addEventListener('mouseleave', startAutoplay);
+  carouselEl.addEventListener('focusin', stopAutoplay);
+  carouselEl.addEventListener('focusout', startAutoplay);
+ 
+  buildCarousel();
+  startAutoplay();
+ 
+  var workIndex = document.getElementById('workIndex');
+  var previewDots = document.getElementById('previewDots');
+  var workCurrent = 0;
+ 
+  function buildWorkSplit(){
+    workIndex.innerHTML = '';
+    previewDots.innerHTML = '';
+    projects.forEach(function(p, i){
+      var item = document.createElement('button');
+      item.type = 'button';
+      item.className = 'work-index-item';
+      var num = document.createElement('span');
+      num.className = 'work-index-num';
+      num.textContent = String(i + 1).padStart(2, '0');
+      var title = document.createElement('span');
+      title.className = 'work-index-title';
+      title.textContent = p.title;
+      item.appendChild(num);
+      item.appendChild(title);
+      item.addEventListener('click', function(){ updateWork(i); });
+      workIndex.appendChild(item);
+ 
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'View ' + p.title);
+      dot.addEventListener('click', function(){ updateWork(i); });
+      previewDots.appendChild(dot);
+    });
+    updateWork(0);
+  }
+ 
+  function updateWork(i){
+    workCurrent = i;
+    var p = projects[i];
+ 
+    Array.from(workIndex.children).forEach(function(item, idx){
+      item.classList.toggle('active', idx === i);
+    });
+    Array.from(previewDots.children).forEach(function(dot, idx){
+      dot.setAttribute('aria-current', idx === i ? 'true' : 'false');
+    });
+ 
+    var photo = document.getElementById('previewPhoto');
+    var fallback = document.getElementById('previewPhotoFallback');
+    photo.style.backgroundImage = p.image ? "url('" + p.image + "')" : 'none';
+    fallback.style.background = 'radial-gradient(120% 120% at ' + p.art[3] + ' ' + p.art[4] + ', ' + p.art[0] + ', ' + p.art[1] + ' 55%, ' + p.art[2] + ' 100%)';
+    fallback.hidden = !!p.image;
+ 
+    var statusEl = document.getElementById('previewStatus');
+    statusEl.classList.toggle('is-active', p.active);
+    document.getElementById('previewStatusText').textContent = p.status;
+ 
+    document.getElementById('previewCase').textContent = p.id;
+    document.getElementById('previewTitle').textContent = p.title;
+    document.getElementById('previewDesc').textContent = p.desc;
+    document.getElementById('previewMeta').textContent = p.role + ' \u2014 ' + p.time;
+    document.getElementById('previewStack').textContent = 'Built with ' + p.stack;
+  }
+ 
+  document.getElementById('previewLink').addEventListener('click', function(e){
+    e.preventDefault();
+    openPanel(projects[workCurrent]);
+  });
+ 
+  buildWorkSplit();
+ 
+  var workAutoplayId = null;
+  function startWorkAutoplay(){
+    if (reduceMotion) return;
+    stopWorkAutoplay();
+    workAutoplayId = setInterval(function(){ updateWork((workCurrent + 1) % projects.length); }, 5000);
+  }
+  function stopWorkAutoplay(){
+    if (workAutoplayId) { clearInterval(workAutoplayId); workAutoplayId = null; }
+  }
+  var workSplitEl = document.querySelector('.work-split');
+  workSplitEl.addEventListener('mouseenter', stopWorkAutoplay);
+  workSplitEl.addEventListener('mouseleave', startWorkAutoplay);
+  workSplitEl.addEventListener('focusin', stopWorkAutoplay);
+  workSplitEl.addEventListener('focusout', startWorkAutoplay);
+  startWorkAutoplay();
  
   // ---------- Scroll reveal ----------
   if ('IntersectionObserver' in window) {
@@ -45,108 +223,40 @@
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in-view'); });
   }
  
-  // ---------- Project data ----------
-  var projects = [
-    {
-      id: 'CASE 01', title: 'Ledger Ops Migration',
-      desc: 'Ran the six-month migration of a finance team off spreadsheets and onto a proper internal tool.',
-      detail: 'Owned the project plan, vendor coordination, and rollout schedule across three departments — scoping, sequencing, and keeping twelve stakeholders aligned on one timeline.',
-      role: 'PM', status: 'Shipped', active: false, time: '2024', link: '#', size: 'c-lg',
-      art: ['#4A423A', '#241F1B', '#141312', '30%', '20%']
-    },
-    {
-      id: 'CASE 02', title: 'Fieldnotes App Rebuild',
-      desc: 'Planned and built the rebuild of a field-research app used by a 40-person research org.',
-      detail: 'Wrote the delivery plan and the offline-first sync engine both — one person owning scope and implementation kept the plan honest about what was actually feasible to ship.',
-      role: 'PM + Dev', status: 'Shipped', active: false, time: '2024', link: '#', size: 'c-wide',
-      art: ['#3C4640', '#1E2320', '#121413', '70%', '30%']
-    },
-    {
-      id: 'CASE 03', title: 'Loom Design System',
-      desc: 'A documented component library for a fintech team\u2019s product engineers.',
-      detail: 'Consolidated four inconsistent UI kits into one system with accessible defaults, cutting new-feature build time by roughly a third.',
-      role: 'Web dev', status: 'Shipped', active: false, time: '2023', link: '#', size: 'c-sm',
-      art: ['#4A3B33', '#241C17', '#141110', '50%', '60%']
-    },
-    {
-      id: 'CASE 04', title: 'Vendor Onboarding Portal',
-      desc: 'Replacing a six-step email chain with one form and a real status tracker.',
-      detail: 'Currently mid-build: I set the milestone plan and I\u2019m coordinating a two-person dev team against it while running weekly stakeholder check-ins.',
-      role: 'PM', status: 'Active', active: true, time: '2025', link: '#', size: 'c-sm',
-      art: ['#37414A', '#1B2126', '#111315', '40%', '40%']
-    },
-    {
-      id: 'CASE 05', title: 'Internal Sprint Dashboard',
-      desc: 'A lightweight dashboard that turns raw ticket data into a real burn-down chart.',
-      detail: 'Built for my own use first — pulling from our tracker\u2019s API to answer the one question every sprint review needs: are we actually on pace.',
-      role: 'Web dev', status: 'Active', active: true, time: '2025', link: '#', size: 'c-wide',
-      art: ['#463A44', '#231C26', '#131015', '60%', '25%']
-    },
-    {
-      id: 'CASE 06', title: 'Nonprofit Site Relaunch',
-      desc: 'A full site relaunch for a nonprofit on a fixed, grant-funded timeline.',
-      detail: 'The budget and deadline were both hard constraints. I built the plan around what was truly necessary for launch, then wrote the site myself to make sure nothing slipped.',
-      role: 'PM + Dev', status: 'Shipped', active: false, time: '2022', link: '#', size: 'c-wide',
-      art: ['#414A3B', '#20261D', '#121511', '35%', '50%']
-    }
-  ];
- 
-  var grid = document.getElementById('bentoGrid');
-  function render(){
-    grid.innerHTML = '';
-    projects.forEach(function(p){
-      var tile = document.createElement('button');
-      tile.className = 'tile ' + p.size;
-      tile.type = 'button';
-      tile.setAttribute('aria-label', 'View case study: ' + p.title);
-      tile.innerHTML =
-        '<span class="tile-art" style="--c1:' + p.art[0] + ';--c2:' + p.art[1] + ';--c3:' + p.art[2] + ';--px:' + p.art[3] + ';--py:' + p.art[4] + '"></span>' +
-        '<span class="tile-case">' + p.id + '</span>' +
-        '<span class="tile-status' + (p.active ? ' is-active' : '') + '"><span class="dot"></span>' + p.status + '</span>' +
-        '<span class="tile-info"><span class="tile-title">' + p.title + '</span><span class="tile-tags">' + p.role + ' \u2014 ' + p.time + '</span></span>';
-      tile.addEventListener('click', function(){ openPanel(p); });
-      grid.appendChild(tile);
-    });
-    if (fine) {
-      grid.querySelectorAll('.tile').forEach(function(el){
-        el.addEventListener('mouseenter', function(){ cursor.classList.add('grow'); });
-        el.addEventListener('mouseleave', function(){ cursor.classList.remove('grow'); });
-      });
-    }
-  }
-  render();
- 
-  // ---------- Case study panel ----------
+  // ---------- Project detail panel ----------
   var overlay = document.getElementById('overlay');
   var panel = document.getElementById('panel');
   var panelClose = document.getElementById('panelClose');
   var panelArt = document.getElementById('panelArt');
+  var panelArtFallback = document.getElementById('panelArtFallback');
  
   function openPanel(p){
-    panelArt.style.setProperty('--c1', p.art[0]);
-    panelArt.style.setProperty('--c2', p.art[1]);
-    panelArt.style.setProperty('--c3', p.art[2]);
-    panelArt.style.setProperty('--px', p.art[3]);
-    panelArt.style.setProperty('--py', p.art[4]);
+    panelArt.style.backgroundImage = p.image ? "url('" + p.image + "')" : 'none';
+    panelArtFallback.style.background = 'radial-gradient(120% 120% at ' + p.art[3] + ' ' + p.art[4] + ', ' + p.art[0] + ', ' + p.art[1] + ' 55%, ' + p.art[2] + ' 100%)';
+    panelArtFallback.hidden = !!p.image;
     document.getElementById('panelCase').textContent = p.id;
     document.getElementById('panelTitle').textContent = p.title;
     document.getElementById('panelRole').textContent = p.role;
     document.getElementById('panelStatus').textContent = p.status;
     document.getElementById('panelTime').textContent = p.time;
+    document.getElementById('panelStack').textContent = p.stack;
     document.getElementById('panelDesc').textContent = p.desc;
     document.getElementById('panelDetail').textContent = p.detail;
-    document.getElementById('panelLink').href = p.link;
     overlay.classList.add('open');
     panel.classList.add('open');
     panel.setAttribute('aria-hidden', 'false');
     panelClose.focus();
     document.body.style.overflow = 'hidden';
+    stopAutoplay();
+    stopWorkAutoplay();
   }
   function closePanel(){
     overlay.classList.remove('open');
     panel.classList.remove('open');
     panel.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    startAutoplay();
+    startWorkAutoplay();
   }
   overlay.addEventListener('click', closePanel);
   panelClose.addEventListener('click', closePanel);
