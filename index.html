@@ -3,96 +3,169 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Angelo Aquino — Project Management &amp; Web Development</title>
+<title>Angelo Karlo Aquino — Project Management &amp; Web Development</title>
+<meta name="description" content="Portfolio of Angelo Karlo Aquino, an IT student, project manager, and web developer: CommunityPulse+, the Sual Municipal Hall Appointment App, and LapShowdown.">
 <link rel="stylesheet" href="Portfolio.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-</head>
 
+</head>
 <body>
- 
-<div class="cursor-dot" id="cursorDot"></div>
  
 <header>
   <div class="wrap header-inner">
-    <a href="#top" class="brand">Angelo Aquino</a>
-    <nav class="primary-nav" id="primaryNav">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a href="#contact" class="nav-cta">Let's talk</a>
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu">
-      <span></span>
-    </button>
+    <div class="nav-left">
+      <a href="#top" class="brand">
+        <span class="brand-logo" aria-hidden="true">AA</span>
+        Angelo Aquino
+      </a>
+      <nav class="primary-nav" id="primaryNav">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#tools">Tools</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <a href="#contact" class="nav-cta">Let's talk</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu">
+        <span></span>
+      </button>
+    </div>
   </div>
 </header>
  
 <main id="top">
   <section class="hero">
-    <div class="wrap">
-      <p class="hero-kicker"><span class="dot"></span>Open for new projects</p>
-      <h1 class="hero-title">
-        <span class="line"><span class="word" style="animation-delay:0.05s">Plans</span> <span class="word" style="animation-delay:0.12s">that</span> <span class="word" style="animation-delay:0.19s">ship.</span></span>
-        <span class="line"><span class="word" style="animation-delay:0.28s">Products</span> <span class="word" style="animation-delay:0.35s">that</span> <span class="word" style="animation-delay:0.42s">work.</span></span>
-      </h1>
-      <p class="hero-sub">I'm Angelo — a project manager and web developer. I plan the roadmap, run the sprints, and write the code that actually ships it.</p>
-      <div class="hero-actions">
-        <a href="#work" class="btn btn-solid">View my work</a>
-        <a href="#contact" class="btn btn-outline">Let's talk</a>
+    <div class="wrap hero-intro">
+      <div class="hero-copy">
+        <h1 class="hero-title">Plans that ship. Products that work.</h1>
+        <p class="hero-sub">I'm Angelo — an IT student, project manager, and web developer. I lead the team, plan the work, and help build what we ship.</p>
+        <div class="hero-actions">
+          <a href="#work" class="btn btn-solid">View my work</a>
+          <a href="#contact" class="btn btn-outline">Let's talk</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>3</strong> projects led as project manager</div>
+          <div><strong>2</strong> delivered on time</div>
+          <div><strong>1</strong> capstone in progress</div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div><strong>3 yrs</strong> delivering projects</div>
-        <div><strong>30+</strong> shipped, end to end</div>
-        <div><strong>PMP</strong> in progress</div>
+    </div>
+ 
+    <div class="hero-social" aria-label="Social links">
+      <a href="https://github.com/angelog9e" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.44-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.08 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5Z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/angelog9e" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.78C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.78 24h20.44c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z"/></svg>
+      </a>
+      <a href="mailto:angelocapara@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+      </a>
+    </div>
+ 
+    <!-- Full-screen project carousel. -->
+    <div class="carousel" id="carousel" tabindex="0" aria-roledescription="carousel" aria-label="Featured projects">
+      <div class="carousel-track" id="carouselTrack"></div>
+      <div class="carousel-nav">
+        <div class="carousel-dots" id="carouselDots"></div>
+        <span class="carousel-nav-label">Nav</span>
+        <div class="carousel-arrows">
+          <button id="prevBtn" aria-label="Previous project">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <span class="arrow-divider"></span>
+          <button id="nextBtn" aria-label="Next project">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </section>
  
-  <div class="marquee-strip" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Roadmapping<span></span></span>
-      <span>Sprint Planning<span></span></span>
-      <span>Stakeholder Comms<span></span></span>
-      <span>React &amp; TypeScript<span></span></span>
-      <span>Agile Delivery<span></span></span>
-      <span>API Design<span></span></span>
-      <span>Risk Management<span></span></span>
-      <span>UI Engineering<span></span></span>
-      <span>Roadmapping<span></span></span>
-      <span>Sprint Planning<span></span></span>
-      <span>Stakeholder Comms<span></span></span>
-      <span>React &amp; TypeScript<span></span></span>
-      <span>Agile Delivery<span></span></span>
-      <span>API Design<span></span></span>
-      <span>Risk Management<span></span></span>
-      <span>UI Engineering<span></span></span>
+  <section id="work" style="padding: 0;">
+    <div class="work-wave-band" aria-hidden="true">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <rect width="1440" height="100" style="fill:var(--bg)"></rect>
+        <path d="M0,60 C120,20 240,20 360,55 C480,90 600,90 720,55 C840,20 960,20 1080,55 C1200,90 1320,90 1440,55 L1440,100 L0,100 Z" style="fill:var(--bg-elevated)"></path>
+      </svg>
     </div>
-  </div>
  
-  <section id="work">
-    <div class="wrap">
+    <div class="wrap" style="padding-top: 12px; padding-bottom: 32px;">
       <div class="section-head reveal">
         <h2 class="section-title">Selected work</h2>
-        <p class="section-note">6 case studies, 2022–2025</p>
+        <p class="section-note">3 projects, 2023–2026</p>
       </div>
-      <div class="bento reveal" id="bentoGrid"></div>
+    </div>
+    <div class="work-split reveal">
+     
+      <nav class="work-index" id="workIndex" aria-label="Select a project to preview"></nav>
+      <div class="work-preview">
+        <div class="preview-photo" id="previewPhoto">
+          <div class="preview-photo-fallback" id="previewPhotoFallback"></div>
+          <div class="preview-scrim"></div>
+          <span class="preview-status" id="previewStatus"><span class="dot"></span><span id="previewStatusText"></span></span>
+          <div class="preview-body">
+            <p class="preview-case" id="previewCase"></p>
+            <h3 class="preview-title" id="previewTitle"></h3>
+            <p class="preview-desc" id="previewDesc"></p>
+            <p class="preview-meta" id="previewMeta"></p>
+            <p class="preview-meta last" id="previewStack"></p>
+            <a href="#" class="preview-link" id="previewLink">View details →</a>
+          </div>
+          <div class="preview-dots" id="previewDots"></div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="work-wave-band" aria-hidden="true">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <rect width="1440" height="100" style="fill:var(--bg-elevated)"></rect>
+        <path d="M0,60 C120,20 240,20 360,55 C480,90 600,90 720,55 C840,20 960,20 1080,55 C1200,90 1320,90 1440,55 L1440,100 L0,100 Z" style="fill:var(--bg)"></path>
+      </svg>
     </div>
   </section>
  
   <section class="about" id="about">
     <div class="wrap about-grid">
       <div class="reveal">
-        <p class="pull-quote">"I don't think plans and products should be handed off between two different people."</p>
-        <p class="body-copy">I started out managing delivery for a software consultancy — running sprints, tracking budgets, keeping clients and engineers speaking the same language. A few years in, I started building the tools myself, and never really stopped.</p>
-        <p class="body-copy">Now I work across both: leading the plan when a project needs structure, writing the code when it needs hands — usually some of each on every engagement.</p>
+        <p class="pull-quote">"I work well independently, but do best in a team where ideas are shared and tested."</p>
+        <p class="body-copy">An Information Technology student and aspiring project manager and web developer with hands-on experience in academic projects covering project management, web development, system design, and networking.</p>
+        <p class="body-copy">Organized, adaptable, and decisive, and always eager to keep learning new technologies and take on new challenges.</p>
       </div>
       <div class="reveal">
+        <h3 class="list-title">Technical skills</h3>
         <ul class="toolkit-list">
-          <li><span>Planning &amp; delivery</span><span>Linear, Jira, Notion</span></li>
-          <li><span>Frontend</span><span>HTML, CSS, JavaScript</span></li>
-          <li><span>Backend</span><span>SQL, MySQL, PHP</span></li>
-          <li><span>Currently</span><span>PMP certification</span></li>
+          <li><span>Project management</span></li>
+          <li><span>Web development</span></li>
+          <li><span>Software development</span></li>
+          <li><span>Business analyst</span></li>
+          <li><span>Data analyst</span></li>
+          <li><span>UI / UX</span></li>
+          <li><span>Networking / troubleshooting</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="about" id="tools">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">Programming languages &amp; tools</h2>
+        <p class="section-note">What I build with</p>
+      </div>
+      <div class="tools-grid reveal">
+        <ul class="toolkit-list">
+          <li><span>Python</span><span>Language</span></li>
+          <li><span>HTML &amp; CSS</span><span>Markup and styling</span></li>
+          <li><span>JavaScript</span><span>Language</span></li>
+          <li><span>PHP</span><span>Language</span></li>
+        </ul>
+        <ul class="toolkit-list">
+          <li><span>MySQL</span><span>Database</span></li>
+          <li><span>Visual Studio Code</span><span>Code editor</span></li>
+          <li><span>Android Studio</span><span>Mobile IDE</span></li>
         </ul>
       </div>
     </div>
@@ -100,15 +173,16 @@
  
   <section class="contact" id="contact">
     <div class="wrap reveal">
-      <h2>Got a project that needs both?</h2>
-      <p>I take on a small number of engagements at a time, usually where the planning and the building can't really be separated.</p>
+      <h2>Have a project, a team, or an opportunity?</h2>
+      <p>Send me a message. I'm always eager to learn new technologies and take on new challenges.</p>
+      <ul class="contact-list">
+        <li><span>Email</span><a href="mailto:angelocapara@gmail.com">angelocapara@gmail.com</a></li>
+        <li><span>Phone</span><a href="tel:+639563629014">+63 956 362 9014</a></li>
+        <li><span>LinkedIn</span><a href="https://linkedin.com/in/angelog9e" target="_blank" rel="noopener">linkedin.com/in/angelog9e</a></li>
+        <li><span>GitHub</span><a href="https://github.com/angelog9e" target="_blank" rel="noopener">github.com/angelog9e</a></li>
+      </ul>
       <div class="contact-actions">
-        <a href="mailto:hello@morganhale.dev" id="emailLink" class="btn btn-solid btn-magnet">Say hello</a>
-      </div>
-      <div class="social-row">
-        <a href="https://github.com/angelog9e" target="_blank" rel="noopener">GitHub</a>
-        <a href="linkedin.com/in/angelog9e" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="angelocapara@gmail.com" target="_blank" rel="noopener">Email</a>
+        <a href="mailto:angelocapara@gmail.com" id="emailLink" class="btn btn-solid">Say hello</a>
       </div>
       <span class="copy-toast" id="copyToast">Email copied — angelocapara@gmail.com</span>
     </div>
@@ -125,6 +199,7 @@
 <div class="overlay" id="overlay"></div>
 <aside class="panel" id="panel" aria-hidden="true" aria-labelledby="panelTitle">
   <div class="panel-art" id="panelArt">
+    <div class="panel-art-fallback" id="panelArtFallback"></div>
     <button class="panel-close" id="panelClose" aria-label="Close project details">×</button>
   </div>
   <div class="panel-body">
@@ -134,12 +209,14 @@
       <div><span>Role</span><span id="panelRole" style="color:var(--ink)"></span></div>
       <div><span>Status</span><span id="panelStatus" style="color:var(--ink)"></span></div>
       <div><span>Timeframe</span><span id="panelTime" style="color:var(--ink)"></span></div>
+      <div><span>Built with</span><span id="panelStack" style="color:var(--ink)"></span></div>
     </div>
     <p class="desc" id="panelDesc"></p>
     <p class="desc" id="panelDetail"></p>
-    <a href="#" class="panel-link" id="panelLink" target="_blank" rel="noopener">View case study →</a>
   </div>
 </aside>
- <script src="script.js"></script>
 </body>
 </html>
+ 
+
+
