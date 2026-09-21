@@ -1,6 +1,6 @@
 (function(){
   document.getElementById('year').textContent = new Date().getFullYear();
- 
+
   // ---------- Mobile nav ----------
   var menuBtn = document.getElementById('menuBtn');
   var nav = document.getElementById('primaryNav');
@@ -14,9 +14,10 @@
       menuBtn.setAttribute('aria-expanded', 'false');
     });
   });
- 
+
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- 
+
+  // ---------- Project data ----------
   var projects = [
     {
       id: 'Capstone project', title: 'CommunityPulse+',
@@ -43,16 +44,16 @@
       image: '', art: ['#4A3B33', '#241C17', '#141110', '50%', '60%']
     }
   ];
- 
+
   function bgStyle(image){
     return image ? "background-image:url('" + image + "')" : '';
   }
- 
+
   // ---------- Carousel ----------
   var track = document.getElementById('carouselTrack');
   var dotsWrap = document.getElementById('carouselDots');
   var current = 0;
- 
+
   function buildCarousel(){
     track.innerHTML = '';
     dotsWrap.innerHTML = '';
@@ -67,7 +68,7 @@
         artEl.style.background = 'radial-gradient(120% 120% at ' + p.art[3] + ' ' + p.art[4] + ', ' + p.art[0] + ', ' + p.art[1] + ' 55%, ' + p.art[2] + ' 100%)';
       }
       track.appendChild(slide);
- 
+
       var dot = document.createElement('button');
       dot.type = 'button';
       dot.setAttribute('aria-label', 'Go to slide ' + (i + 1) + ': ' + p.title);
@@ -76,7 +77,7 @@
     });
     updateCarousel();
   }
- 
+
   function updateCarousel(){
     track.style.transform = 'translateX(-' + (current * 100) + '%)';
     Array.from(dotsWrap.children).forEach(function(dot, i){
@@ -89,16 +90,16 @@
   }
   function next(){ goTo(current + 1); }
   function prev(){ goTo(current - 1); }
- 
+
   document.getElementById('nextBtn').addEventListener('click', next);
   document.getElementById('prevBtn').addEventListener('click', prev);
- 
+
   var carouselEl = document.getElementById('carousel');
   carouselEl.addEventListener('keydown', function(e){
     if (e.key === 'ArrowRight') next();
     if (e.key === 'ArrowLeft') prev();
   });
- 
+
   // Touch swipe
   var touchStartX = null;
   carouselEl.addEventListener('touchstart', function(e){ touchStartX = e.changedTouches[0].clientX; }, { passive: true });
@@ -108,7 +109,8 @@
     if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
     touchStartX = null;
   }, { passive: true });
- 
+
+
   var autoplayId = null;
   function startAutoplay(){
     if (reduceMotion) return;
@@ -122,14 +124,15 @@
   carouselEl.addEventListener('mouseleave', startAutoplay);
   carouselEl.addEventListener('focusin', stopAutoplay);
   carouselEl.addEventListener('focusout', startAutoplay);
- 
+
   buildCarousel();
   startAutoplay();
- 
+
+
   var workIndex = document.getElementById('workIndex');
   var previewDots = document.getElementById('previewDots');
   var workCurrent = 0;
- 
+
   function buildWorkSplit(){
     workIndex.innerHTML = '';
     previewDots.innerHTML = '';
@@ -147,7 +150,7 @@
       item.appendChild(title);
       item.addEventListener('click', function(){ updateWork(i); });
       workIndex.appendChild(item);
- 
+
       var dot = document.createElement('button');
       dot.type = 'button';
       dot.setAttribute('aria-label', 'View ' + p.title);
@@ -156,42 +159,42 @@
     });
     updateWork(0);
   }
- 
+
   function updateWork(i){
     workCurrent = i;
     var p = projects[i];
- 
+
     Array.from(workIndex.children).forEach(function(item, idx){
       item.classList.toggle('active', idx === i);
     });
     Array.from(previewDots.children).forEach(function(dot, idx){
       dot.setAttribute('aria-current', idx === i ? 'true' : 'false');
     });
- 
+
     var photo = document.getElementById('previewPhoto');
     var fallback = document.getElementById('previewPhotoFallback');
     photo.style.backgroundImage = p.image ? "url('" + p.image + "')" : 'none';
     fallback.style.background = 'radial-gradient(120% 120% at ' + p.art[3] + ' ' + p.art[4] + ', ' + p.art[0] + ', ' + p.art[1] + ' 55%, ' + p.art[2] + ' 100%)';
     fallback.hidden = !!p.image;
- 
+
     var statusEl = document.getElementById('previewStatus');
     statusEl.classList.toggle('is-active', p.active);
     document.getElementById('previewStatusText').textContent = p.status;
- 
+
     document.getElementById('previewCase').textContent = p.id;
     document.getElementById('previewTitle').textContent = p.title;
     document.getElementById('previewDesc').textContent = p.desc;
     document.getElementById('previewMeta').textContent = p.role + ' \u2014 ' + p.time;
     document.getElementById('previewStack').textContent = 'Built with ' + p.stack;
   }
- 
+
   document.getElementById('previewLink').addEventListener('click', function(e){
     e.preventDefault();
     openPanel(projects[workCurrent]);
   });
- 
+
   buildWorkSplit();
- 
+
   var workAutoplayId = null;
   function startWorkAutoplay(){
     if (reduceMotion) return;
@@ -207,7 +210,7 @@
   workSplitEl.addEventListener('focusin', stopWorkAutoplay);
   workSplitEl.addEventListener('focusout', startWorkAutoplay);
   startWorkAutoplay();
- 
+
   // ---------- Scroll reveal ----------
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(entries){
@@ -222,14 +225,14 @@
   } else {
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in-view'); });
   }
- 
+
   // ---------- Project detail panel ----------
   var overlay = document.getElementById('overlay');
   var panel = document.getElementById('panel');
   var panelClose = document.getElementById('panelClose');
   var panelArt = document.getElementById('panelArt');
   var panelArtFallback = document.getElementById('panelArtFallback');
- 
+
   function openPanel(p){
     panelArt.style.backgroundImage = p.image ? "url('" + p.image + "')" : 'none';
     panelArtFallback.style.background = 'radial-gradient(120% 120% at ' + p.art[3] + ' ' + p.art[4] + ', ' + p.art[0] + ', ' + p.art[1] + ' 55%, ' + p.art[2] + ' 100%)';
@@ -261,7 +264,7 @@
   overlay.addEventListener('click', closePanel);
   panelClose.addEventListener('click', closePanel);
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closePanel(); });
- 
+
   // ---------- Copy email ----------
   var emailLink = document.getElementById('emailLink');
   var toast = document.getElementById('copyToast');
